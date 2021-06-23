@@ -1,0 +1,151 @@
+CREATE TABLE mt_colecciones(
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(70) NOT NULL,
+	url VARCHAR(70) NOT NULL,
+	descrip VARCHAR(70) NOT NULL,
+	tipo INT(1) NOT NULL DEFAULT 1,
+	superior INT(11) NOT NULL DEFAULT 1,
+	estado INT(1) NOT NULL DEFAULT 1,
+	fecha DATETIME NOT NULL,
+	total_e INT(7) NOT NULL DEFAULT 0,
+	PRIMARY KEY(id)
+)DEFAULT CHARSET = UTF8;
+CREATE TABLE mt_comentarios(
+	id INT(7) NOT NULL AUTO_INCREMENT,
+	destino INT(7) NOT NULL,
+	usuario INT(7) NOT NULL DEFAULT 0,
+	autor VARCHAR(30) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	sitio VARCHAR(60) NOT NULL,
+	contenido TEXT NOT NULL,
+	fecha DATETIME NOT NULL,
+	ip VARCHAR(15) NOT NULL,
+	agent VARCHAR(60) NOT NULL,
+	tipo INT(1) NOT NULL,
+	superior INT(7) NOT NULL,
+	estado INT(1) NOT NULL,
+	PRIMARY KEY(id)
+)DEFAULT CHARSET = UTF8;
+CREATE TABLE mt_entradas(
+	id INT(7) NOT NULL AUTO_INCREMENT,
+	titulo VARCHAR(70) NOT NULL,
+	url VARCHAR(150) NOT NULL,
+	fecha DATE NOT NULL,
+	fecha_u DATETIME NOT NULL,
+	descrip VARCHAR(250) NOT NULL,
+	contenido TEXT NOT NULL,
+	coleccion INT(11) NOT NULL DEFAULT 0,
+	superior INT(11) NOT NULL DEFAULT 0,
+	tags VARCHAR(250) NOT NULL,
+	portada VARCHAR(250) NOT NULL,
+	usuario INT(11) NOT NULL DEFAULT 1,
+	estado INT(1) NOT NULL DEFAULT 0,
+	tipo INT(2) NOT NULL DEFAULT 1,
+	plantilla VARCHAR(30) NOT NULL,
+	total_coment INT(7) NOT NULL DEFAULT 0,
+	total_caps INT(7) NOT NULL DEFAULT 0,
+	manga_api INT(1) NOT NULL DEFAULT 0,
+	manga_api_id VARCHAR(100) NOT NULL,
+	PRIMARY KEY(id),
+	FULLTEXT(titulo,descrip)
+)ENGINE = MYISAM DEFAULT CHARSET = UTF8;
+CREATE TABLE mt_intentosf(
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	tiempo VARCHAR(10) NOT NULL,
+	usuario INT(11) NOT NULL,
+	PRIMARY KEY(id)
+)DEFAULT CHARSET = UTF8;
+CREATE TABLE mt_perfil(
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(30) NOT NULL,
+	sexo INT(1) NOT NULL DEFAULT 0,
+	nacimiento DATE NOT NULL,
+	firma VARCHAR(200) NOT NULL,
+	descrip VARCHAR(250) NOT NULL,
+	sitio VARCHAR(60) NOT NULl,
+	s_facebook VARCHAR(60) NOT NULL,
+	s_twitter VARCHAR(60) NOT NULL,
+	s_google VARCHAR(60) NOT NULL,
+	s_linkedin VARCHAR(60) NOT NULL,
+	PRIMARY KEY(id)
+)DEFAULT CHARSET = UTF8;
+CREATE TABLE mt_sitio(
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	titulo VARCHAR(30) NOT NULL,
+	lema VARCHAR(30) NOT NULL,
+	descrip VARCHAR(150) NOT NULL,
+	url VARCHAR(70) NOT NULL,
+	email VARCHAR(60) NOT NULL DEFAULT 'no_responder@localhost',
+	cms_info VARCHAR(70) NOT NULL,
+	cms_v VARCHAR(30) NOT NULL,
+	cms_a DATE NOT NULL,
+	conf_enlaces VARCHAR(50) NOT NULL,
+	conf_enlaces_anidar INT(1) NOT NULL DEFAULT 1,
+	conf_epp INT(4) NOT NULL DEFAULT 10,
+	conf_coment INT(1) NOT NULL DEFAULT 1,
+	conf_intentos INT(2) NOT NULL DEFAULT 10,
+	conf_registro INT(1) NOT NULL DEFAULT 1,
+	conf_validaemail INT(1) NOT NULL DEFAULT 0,
+	total_u INT(11) NOT NULL DEFAULT 1,
+	total_p INT(7) NOT NULL DEFAULT 0,
+	total_a INT(7) NOT NULL DEFAULT 0,
+	total_c INT(7) NOT NULL DEFAULT 0,
+	total_t INT(7) NOT NULL DEFAULT 0,
+	total_cat INT(7) NOT NULL DEFAULT 0,
+	tema_nombre VARCHAR(30) NOT NULL DEFAULT 'default',
+	tema_url VARCHAR(40) NOT NULL DEFAULT 'tema',
+	tema_ext VARCHAR(5) NOT NULL DEFAULT 'tpl',
+	PRIMARY KEY(id)
+)DEFAULT CHARSET = UTF8;
+CREATE TABLE mt_temas(
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	titulo VARCHAR(30) NOT NULL,
+	dir VARCHAR(30) NOT NULL,
+	ruta VARCHAR(150) NOT NULL,
+	info VARCHAR(50) NOT NULL,
+	version VARCHAR(30) NOT NULL,
+	PRIMARY KEY(id)
+)DEFAULT CHARSET = UTF8;
+CREATE TABLE mt_usuario(
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	nickname VARCHAR(16) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	clave CHAR(128) NOT NULL,
+	salt CHAR(128) NOT NULL,
+	ip VARCHAR(15) NOT NULL,
+	fregistro DATE NOT NULL,
+	estado INT(1) NOT NULL DEFAULT 0,
+	grupo INT(2) NOT NULL DEFAULT 0,
+	huella CHAR(64) NOT NULL,
+	total_e INT(7) NOT NULL DEFAULT 0,
+	PRIMARY KEY(id)
+)DEFAULT CHARSET = UTF8;
+CREATE TABLE mt_sesiones(
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	usuario INT(11) NOT NULL,
+	tiempo INT(11) NOT NULL,
+	ip VARCHAR(15) NOT NULL,
+	agent VARCHAR(60) NOT NULL,
+	huella CHAR(64) NOT NULL,
+	PRIMARY KEY(id)
+)DEFAULT CHARSET=UTF8;
+
+/* ---------- Datos por defecto ---------- */
+INSERT INTO mt_sitio(titulo, lema, descrip, url, cms_info, cms_v, cms_a, conf_enlaces) VALUES(
+	'MangaScript', 'CMS', 'Sistema de publicación de manga', 'http://localhost/mangascript',
+	'Mictlan Manga CMS', 'Alfa 1.0', '2016-07-18', '{col}/{nombre}'
+);
+INSERT INTO mt_usuario(nickname, email, clave, salt, estado, grupo) VALUES(
+	'admin',
+	'contacto@localhost',	'f380926be0fa7e6a095a76a7621115021c9e764a2f81692fa15b5a050f829cad20a224e605286fb9e4e4eb6575e3b708fd0ae86724880d401e4a09352fc6fd74',	'7b7c9a0499a53f46dc128e9ec7af334816f1771f6ba42092f53272df8993592230f9852a0f5439b83f4e518f02ad6d88f4f21977fdf295da5dfa338212d82fd5',
+	1, 1
+);
+INSERT INTO mt_perfil(nombre) VALUES('Administrador');
+--Seccion pedidos
+CREATE TABLE mt_pedidos(
+	 id INT(11) NOT NULL AUTO_INCREMENT,
+	 nombre TEXT NOT NULL,
+	 estado INT(1) NOT NULL DEFAULT '0',
+	 fecha DATE NOT NULL,
+	 PRIMARY KEY (id)
+ )DEFAULT CHARSET=UTF8;

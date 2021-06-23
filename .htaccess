@@ -1,0 +1,43 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)/pagina/([0-9]+)$ index.php?url=$1&pagina=$2 [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+ErrorDocument 404 /error404
+
+Options All -Indexes
+IndexIgnore *
+<FilesMatch "\.(htaccess|ini|log|cfg|tpl)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4.0[678] no-gzip
+BrowserMatch #MSIE !no-gzip !gzip-only-text/html
+</ifmodule>
+#<ifmodule mod_expires.c>
+#  ExpiresActive On
+#  ExpiresDefault "access plus 1 seconds"
+#  ExpiresByType text/html "access plus 7200 seconds"
+#  ExpiresByType image/gif "access plus 2678400 seconds"
+#  ExpiresByType image/jpeg "access plus 2678400 seconds"
+#  ExpiresByType image/png "access plus 2678400 seconds"
+#  ExpiresByType text/css "access plus 518400 seconds"
+#  ExpiresByType text/javascript "access plus 2678400 seconds"
+#  ExpiresByType application/x-javascript "access plus 2678400 seconds"
+#</ifmodule>
+#<ifmodule mod_headers.c>
+#  Header set Cache-Control "max-age=2678400, public"
+#  Header set Cache-Control "max-age=7200, private, must-revalidate"
+#  Header set Cache-Control "max-age=86400, public"
+#  Header set Cache-Control "max-age=2678400, private"
+#</ifmodule>

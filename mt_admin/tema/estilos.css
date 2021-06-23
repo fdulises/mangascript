@@ -1,0 +1,521 @@
+/*
+*Mictlan Manga CMS - Todos los derechos reservados
+*V Alpha 16.08.05
+*Desarrollado por Ulises Rendón - http://debred.com - ulises@debred.com
+*/
+@import url(css/extras.css);
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('fonts/sourcesanspro-regular-webfont.eot');
+    src: url('fonts/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/sourcesanspro-regular-webfont.woff') format('woff'),
+         url('fonts/sourcesanspro-regular-webfont.ttf') format('truetype'),
+         url('fonts/sourcesanspro-regular-webfont.svg#source_sans_proregular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+/* ---------- Paleta de colores ---------- */
+.dark-primary-color{ background-color: #1976D2; }
+.default-primary-color { background-color: #2196F3; }
+.light-primary-color{ background-color: #BBDEFB; }
+.text-primary-color{ color: #FFFFFF; }
+.accent-color{ background-color: #FF5722; }
+.primary-text-color{ color: #212121; }
+.secondary-text-color{ color: #727272; }
+.divider-color{ border-color: #B6B6B6; }
+/* ---------- Estilos Generales ---------- */
+*, *:after, *:before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    font: 18px 'Source Sans Pro', helvetica;
+    color: #212121;
+}
+a{
+	text-decoration: none;
+	color: #2196F3;
+}
+a:hover{
+	color: #FF5722;
+}
+img{
+    max-width: 100% !important;
+}
+a img{
+    border: none;
+}
+p{
+    margin-bottom: 30px;
+}
+ul, ol {
+    margin-left: 25px;
+}
+li {
+    margin-bottom: 15px;
+}
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+h3 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+/* ---------- Sistema de rejillas --------- */
+.container{
+	width : 100%;
+	max-width : 1200px;
+	margin: 0 auto;
+	padding: 0 12px;
+}
+.container:before, .container:after {
+    content:"";
+	display: table ;
+    clear:both;
+}
+[class*="gd-"]{
+    float: left;
+    min-height: 1px;
+    padding: 0 12px;
+    width: 16.66%;
+}
+.gd-10{width: 10%;}
+.gd-20{width: 20%;}
+.gd-30{width: 30%;}
+.gd-40{width: 40%;}
+.gd-50{width: 50%;}
+.gd-60{width: 60%;}
+.gd-70{width: 70%;}
+.gd-80{width: 80%;}
+.gd-90{width: 90%;}
+.gd-16{width: 16.66%;}
+.gd-25{width: 25%;}
+.gd-33{width: 33.33%;}
+.gd-66{width: 66.66%;}
+.gd-83{width: 83.33%;}
+.gd-100{width: 100%;}
+@media all and (max-width:800px){
+    .gm-20{width: 20%;}
+    .gm-25{width: 25%;}
+    .gm-33{width: 33.33%;}
+    .gm-50{width: 50%;}
+    .gm-100{width: 100%;}
+}
+@media all and (max-width:650px){
+    [class*="gd-"]{
+        width: 100%;
+    }
+}
+/* ---------- Extras ---------- */
+.bx-center{margin: 0 auto;}
+.bx-der{float: right !important;}
+.bx-izq{float: left;}
+.tx-center{text-align: center;}
+.tx-der{text-align: right;}
+.mg-40b{margin-bottom: 40px;}
+.pd-40x{padding: 40px 0;}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+    clear:both;
+}
+.oculto{display: none;}
+.transparente{
+	opacity: 0;
+}
+[data-state=transparente]{
+	opacity: 0;
+}
+.cont-960{
+    max-width: 960px;
+}
+.cont-750{
+    max-width: 750px;
+}
+.cont-500{
+    max-width: 500px;
+}
+.bg-gris{
+    background-color: #f7f5f2;
+}
+.cont-st1{
+    padding: 40px 0;
+}
+.nav-hor{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    float: left;
+}
+.nav-hor li{
+    display: inline-block;
+    float: left;
+    margin: 0;
+}
+.nav-hor li a{
+    display: block;
+    padding: 20px 20px;
+}
+.nav-sec a{
+    color: #666;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.5s;
+}
+.nav-sec .active a{
+    background-color: #fff;
+}
+.nav-sec a:hover{
+    background-color: #fff;
+}
+/* ---------- Formulario Basico ---------- */
+.form-campos {
+    margin-bottom: 15px;
+}
+.form-campos.container {
+    padding: 0;
+}
+.form-campos [class*="gd-"]:first-child {
+    padding-left: 0;
+}
+.form-campos [class*="gd-"]:last-child {
+    padding-right: 0;
+}
+label{
+    color: #666;
+    font-size: 16px;
+	display: block;
+}
+.form-in{
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+	width: 100%;
+}
+.form-in:focus{
+	border-color: #66ccee;
+	box-shadow: 0 0 3px 0px #60ccee;
+}
+.form-checkbox label {
+    color: #333;
+    display: inline;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.btn-default{
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    background-color: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 15px 40px;
+	color: #000;
+}
+.btn-default:hover{
+    background-color: #fafafa;
+}
+.btn-block{
+	display: block;
+	width: 100%;
+}
+.btn-azul{
+    background-color: #237cbf;
+    border: 1px solid #e0e0e0;
+	color: #fff;
+	font-weight: bold;
+}
+.btn-azul:hover{
+    background-color: #18537f;
+}
+.btn-azul-claro{
+    display: inline-block;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 40px;
+    padding: 10px 20px;
+    background-color: #BBDEFB;
+	color: #fff;
+	font-weight: bold;
+}
+.btn-azul-claro:hover{
+    background-color: #FF5722;
+	color: #fff;
+}
+/* ---------- Contenedores superiores ---------- */
+.fondo-a{
+    background-color: #1976D2;
+    padding: 20px 0;
+    color: #fff;
+}
+.fondo-b{
+    background-color: #1976D2;
+    color: #fff;
+}
+#mnav img {
+    display: block;
+    width: 200px;
+}
+#mnav ul {
+    display: inline-block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+#mnav li{
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+}
+#mnav a{
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    padding: 20px 20px;
+}
+#mnav a:hover{
+    color: #ff5722;
+}
+#mnav ul a {
+    padding: 30px 20px 31px;
+}
+#mnav ul a:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+#text-principal {
+    margin-top: 50px;
+}
+.fondo-b ul {
+    padding: 10px 0;
+}
+#mlogotipo {
+    display: inline-block;
+    float: left;
+}
+#mnav .avatar_mini {
+    display: inline-block;
+    height: 20px !important;
+    margin-right: 5px;
+    vertical-align: bottom;
+    width: 20px !important;
+}
+/* ---------- Contenedores centrales ---------- */
+h2 {
+    font-size: 40px;
+    margin-bottom: 40px;
+    padding: 0;
+    text-align: center;
+}
+.img-cover{
+    margin-bottom: 40px;
+}
+.cont-dato{
+    display: inline-block;
+}
+.bg-st1 {
+    background-color: #1d7373;
+    border-radius: 9px;
+    color: #fff;
+    padding: 20px 40px 40px;
+}
+h4{
+    padding: 10px 0 20px 0;
+}
+.art-row {
+    font-size: 16px;
+    padding: 15px 0;
+	transition: opacity 0.5s;
+}
+.art-row:nth-child(2n+1) {
+    background-color: #f7f5f2;
+}
+.art-row:before, .art-row:after {
+    content:"";
+	display: table ;
+    clear:both;
+}
+.art-row-cont{
+    margin-bottom: 20px;
+}
+.art-row a{
+    color: #000;
+    font-weight: bold;
+}
+.img-avatar-min {
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 50px;
+}
+#acceso-cont-img{
+    background: url(img/natural-fondo-1.jpg) no-repeat fixed center center transparent;
+    background-size: cover;
+}
+#acceso-logotipo img{
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0px 0 2px rgba(0, 0, 0, 0.5));
+}
+#acceso-copy{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 22px;
+}
+/*#acceso-cont{
+    padding: 20px 0 0 0;
+}*/
+#acceso-copy {
+    bottom: 0;
+    color: #fff;
+    font-size: 22px;
+    left: 0;
+    padding: 20px 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+#acceso-cont {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    margin-top: 40px;
+    padding: 20px 40px;
+	box-shadow: 0 0 10px -6px rgba(0, 0, 0, 0.5);
+}
+#acceso-cont button {
+    border: none;
+}
+#acceso-cont .form-in{
+    padding: 20px 20px;
+}
+.panel-ico {
+    font-size: 100px;
+}
+/* ---------- Contenedores inferiores ---------- */
+#copy {
+    background-color: #2196F3;
+    color: #fff;
+    font-size: 16px;
+    padding: 40px 0;
+}
+#copy h6 {
+    font-size: 16px;
+}
+/* ---------- Mensajes de alerta --------- */
+.msg-default {
+    margin-bottom: 20px;
+    padding: 20px;
+	border-radius: 5px;
+	transition: opacity 0.5s;
+	text-align: left !important;
+}
+.msg-success {
+    background-color: #b3ffd2;
+    border: 1px solid #00732f;
+    color: #00732f;
+}
+.msg-error {
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    color: #b94a48;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+}
+.msg-default span[class*=icon-]{
+    display: block;
+    float: left;
+    font-size: 35px;
+    height: 30px;
+    margin-right: 15px;
+    margin-top: -5px;
+    opacity: 0.6;
+}
+.msg-cerrar {
+    cursor: pointer;
+    display: block;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: -15px;
+    margin-top: -20px;
+    padding: 5px;
+    position: relative;
+}
+/* ---------- Botones de acciones --------- */
+.bta{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #666 !important;
+    font-size: 18px;
+    padding: 10px;
+	display: inline-block;
+	margin: 5px 0;
+}
+.bta:hover{
+  background-color: #f0f0f0;
+}
+/* --------- Estilos de la pagina de acceso --------- */
+#acceso-copy h6 {
+    text-shadow: 2px 2px 2px #000;
+}
+#acceso-cont-img {
+    padding-top: 20px;
+}
+
+/* ----------- ---------- */
+.indicador-estado {
+    background-color: #cecece;
+    border-radius: 10px;
+    box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.5) inset;
+    display: inline-block;
+    margin: 3px 10px 10px 5px;
+    min-height: 10px;
+    min-width: 10px;
+    vertical-align: top;
+}
+.estado-1{background-color: #2eeb76;}
+.estado-2{background-color: #2ec6eb;}
+.estado-3{background-color: #fff85f;}
+.estado-4{background-color: #e71717;}
+
+/* ----------- Previsualizacion de entrada ----------- */
+#entrada_pre {
+    padding: 50px 0;
+}
+#entrada_pre h1{
+	margin-bottom: 40px;
+}
+.cont-600 {
+    max-width: 600px;
+}
+#newuploadbox form {
+    padding-bottom: 20px;
+}
